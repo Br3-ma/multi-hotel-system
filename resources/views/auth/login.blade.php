@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Innap : Hotel Admin Template</title>
+    <title>Shamba : Loge Management System</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/lgoavt.png" />
@@ -32,7 +32,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-                                        <a href="index.html"><img width="230"src="{{ asset('theme/images/logo.png')}}" alt=""></a>
+                                        <a href="{{ route('dashboard')}}"><img width="230"src="{{ asset('public/img/1.png')}}" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form method="POST" action="{{ route('login') }}">
@@ -73,9 +73,6 @@
                                             <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
