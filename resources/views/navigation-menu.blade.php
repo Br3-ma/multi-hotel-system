@@ -168,9 +168,9 @@
                     </li>
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                            <img src="{{asset('theme/images/profile/pic1.jpg')}}" alt="">
+                            <img src="https://www.lightstalking.com/wp-content/uploads/Wildlife-Photographs-01.jpg" alt="">
                             <div class="header-info ms-3">
-                                <span>Green webb</span>
+                                <span>{{ auth()->user()->fname.' '.auth()->user()->lname }}</span>
                                 <small>Superadmin</small>
                             </div>
                         </a>

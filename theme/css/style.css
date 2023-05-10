@@ -76,7 +76,7 @@
 :root {
   --primary: #000000;
   --secondary: #627EEA;
-  --primary-hover: #034bd9;
+  --primary-hover: #ffff;
   --primary-light: #aac7fe;
   --primary-dark: #012875;
   --rgba-primary-1: rgba(19, 98, 252, 0.1);
@@ -10585,7 +10585,7 @@ svg.pulse-svg {
   width: 50vw; }
 
 :root {
-  --primary: #000;
+  --primary: #fff;
   --secondary: #627EEA;
   --primary-hover: #034bd9;
   --primary-light: #aac7fe;
@@ -10781,7 +10781,7 @@ The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
 :root {
-  --primary: #000;
+  --primary: #fff;
   --secondary: #627EEA;
   --primary-hover: #034bd9;
   --primary-light: #aac7fe;
@@ -11010,7 +11010,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   [data-sidebar-style="mini"] .deznav li a.has-arrow::after {
     transform: rotate(-45deg) translateY(-50%); } }
 :root {
-  --primary: #000;
+  --primary: #fff;
   --secondary: #627EEA;
   --primary-hover: #034bd9;
   --primary-light: #aac7fe;

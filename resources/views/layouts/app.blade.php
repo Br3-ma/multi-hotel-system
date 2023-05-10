@@ -26,7 +26,7 @@
         <?php include  "theme/components/preloader.php" ?>
         <div id="main-wrapper">
             <div class="nav-header">
-                <a href="index.html" class="brand-logo">
+                <a href="{{ route('dashboard')}}" class="brand-logo">
 
                     <img width="100" class="logo-abbr" src="{{asset('public/img/logo.png')}}">
                     <img width="98" class="brand-title" src="{{ asset('public/img/logowhite.png')}}">
