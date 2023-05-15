@@ -20,7 +20,7 @@ trait RoomTrait {
     }
 
     public function getAllRooms($team_id){
-        return Room::with('staff')->where('team_id', $team_id)->orderByDesc('created_at')->with('room_types')->get();
+        return Room::with('staff')->where('team_id', $team_id)->orderByDesc('created_at')->with('room_types')->paginate(5);
     }
 
     // For API use

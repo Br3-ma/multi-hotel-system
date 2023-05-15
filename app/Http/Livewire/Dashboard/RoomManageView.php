@@ -12,9 +12,11 @@ class RoomManageView extends Component
 
     public function render()
     {
-        $this->rooms = $this->getAllRooms(auth()->user()->currentTeam->id);
+        $rooms = $this->getAllRooms(auth()->user()->currentTeam->id);
         $this->room_types = $this->getAllRoomTypes2(auth()->user()->currentTeam->id);
-        return view('livewire.dashboard.room-manage-view');
+        return view('livewire.dashboard.room-manage-view',[
+            'rooms'=> $rooms
+        ]);
     }
 
     public function toggleStatus($id){
