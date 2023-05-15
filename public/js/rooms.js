@@ -118,6 +118,7 @@ $(function() {
                     toastr.options.positionClass = 'toast-bottom-right';
                     toastr.error(response.title, response.message);
                 }
+                location.reload();
                 
             },
             error: function(xhr, status, error) {
