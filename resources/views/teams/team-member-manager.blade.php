@@ -6,17 +6,17 @@
         <div class="mt-10 sm:mt-0">
             <x-form-section submit="addTeamMember">
                 <x-slot name="title">
-                    {{ __('Add Hotel Member') }}
+                    {{ __('Add Lodge Member') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('Add a new team member to the hotel, allowing them to collaborate with you.') }}
+                    {{ __('Add a new team member to the lodge, allowing them to collaborate with you.') }}
                 </x-slot>
 
                 <x-slot name="form">
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600">
-                            {{ __('Please provide the email address of the person you would like to add to this hotel.') }}
+                            {{ __('Please provide the email address of the person you would like to add to this lodge.') }}
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.') }}
+                    {{ __('These people have been invited to your lodge and have been sent an invitation email. They may join the team by accepting the email invitation.') }}
                 </x-slot>
 
                 <x-slot name="content">

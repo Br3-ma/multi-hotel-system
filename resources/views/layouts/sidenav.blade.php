@@ -8,7 +8,8 @@
                 </a>
             
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-050-info"></i>
                     <span class="nav-text">Bookings</span>
                 </a>
@@ -19,7 +20,8 @@
                     <li><a href="{{ route('guests') }}">Guests</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-041-graph"></i>
                     <span class="nav-text">Accomodation</span>
                 </a>
@@ -66,13 +68,13 @@
                     <li><a href="uc-lightgallery.html">Light Gallery</a></li>
                 </ul>
             </li> -->
-            <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
+            <li><a href="#" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-013-checkmark"></i>
                     <span class="nav-text">Payments</span>
                 </a>
             </li>
             <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <a class="has-arrow ai-icon" href="#" aria-expanded="false">
                     <i class="flaticon-072-printer"></i>
                     <span class="nav-text">Reports</span>
                 </a>
@@ -89,9 +91,9 @@
                     <span class="nav-text">Settings</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('teams.create') }}"> {{ __('Create Hotel') }} </a></li>
+                    <li><a href="{{ route('teams.create') }}"> {{ __('Add Lodge') }} </a></li>
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                    <li><a href="{{ route('manage-hotels') }}">Manage Hotels</a></li>
+                    <li><a href="{{ route('manage-hotels') }}">Manage Lodges</a></li>
                     @endcan
                 </ul>
             </li>

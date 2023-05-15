@@ -5,7 +5,7 @@
                 {{ $team->name }} Profile
             </x-slot>
             <x-slot name="description">
-                {{ __('The Hotel\'s name and owner information.') }}
+                {{ __('The Lodge\'s name and owner information.') }}
             </x-slot>
         </div>
     

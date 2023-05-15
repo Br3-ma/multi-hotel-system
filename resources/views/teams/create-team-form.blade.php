@@ -1,15 +1,15 @@
 <x-form-section submit="createTeam">
     <x-slot name="title">
-        {{ __('New Hotel Details') }}
+        {{ __('New Lodge Details') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Create a new team to collaborate with others on projects.') }}
+        {{ __('Create a new Lodge to collaborate with others on projects.') }}
     </x-slot>
 
     <x-slot name="form">
-        <div class="col-span-6">
-            <x-label value="{{ __('Super Administrator') }}" />
+        {{--<div class="col-span-6">
+             <x-label value="{{ __('Super Administrator') }}" />
 
             <div class="row items-center mt-2">
                 <img class="col-xl-1" style="border-radius: 100%" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}">
@@ -19,22 +19,23 @@
                     <div class="text-gray-700 text-sm">{{ $this->user->email }}</div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Hotel Name') }}" />
+            <x-label for="name" value="{{ __('Lodge Name') }}" />
             <x-input id="name" type="text" wire:model.defer="state.name" autofocus />
             <x-input-error for="name" class="mt-2" />
             
-            <x-label for="type" value="{{ __('Hotel Type') }}" />
+            <x-label for="type" value="{{ __('Lodge Type') }}" />
             <select id="type" type="text" class="form-control" wire:model.defer="state.type" autofocus>
                 <option value="">--Select--</option>
-                <option value="classic">Classic</option>
-                <option value="urban">Urban</option>
+                <option value="Classic">Classic</option>
+                <option value="Urban">Urban</option>
+                <option value="5 Star">5 Star</option>
             </select>
             <x-input-error for="name" class="mt-2" />
             
-            <x-label for="rating" value="{{ __('Hotel Rating') }}" />
+            <x-label for="rating" value="{{ __('Lodge Rating') }}" />
             <select id="rating" type="text" class="form-control" wire:model.defer="state.rating" autofocus>
                 <option value="">--Select--</option>
                 <option value="1">1</option>

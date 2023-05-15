@@ -9,23 +9,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#All" role="tab">All Hotels</a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#Published" role="tab">3 Star Hotels</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#Deleted" role="tab">5 Star Hotels</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
-                        <div class="d-flex p-md-0 p-sm-4 p-3">
-                            <span class="me-3">Sort by rate:</span>
-                            <ul class="star-review">
-                                <li><i class="fas fa-star orange"></i></li>
-                                <li><i class="fas fa-star orange"></i></li>
-                                <li><i class="fas fa-star orange"></i></li>
-                                <li><i class="fas fa-star orange"></i></li>
-                                <li><i class="fas fa-star orange"></i></li>
-                            </ul>
+                        <div class="d-flex align-items-center p-2"> 
+                            <a href="{{ route('teams.create') }}" class="btn btn-secondary">+ Add New Lodge</a>
+                            {{-- <div class="newest ms-3">
+                                <select class="default-select">
+                                    <option>Newest</option>
+                                    <option>Oldest</option>
+                                </select>
+                            </div>	 --}}
                         </div>
                     </div>	
                     <div class="card-body pb-0">
@@ -56,10 +55,16 @@
                                                 </ul>
                                                 <p class="mb-0">I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and  was very helpful and excellent</p>
                                             </div>
+                                            @if ($team->id === auth()->user()->currentTeam->id)
+                                            <div class="col-xl-3 text-end col-xxl-2 action-btn">
+                                                <p class="btn btn-xs">Logged In</p>
+                                            </div>
+                                            @else
                                             <div class="col-xl-3 text-end col-xxl-2 action-btn">
                                                 <button type="submit" wire:click="switchHotel({{ $team->id }})" class="btn btn-primary btn-xs">Switch</button>
                                                 {{-- <x-switchable-team :team="$team" component="responsive-nav-link" /> --}}
                                             </div>
+                                            @endif
                                         </div>
                                     @endforeach
                                 @endif
