@@ -9,7 +9,7 @@
 
     <x-slot name="form">
         <!-- Profile Photo -->
-        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+        @if (!Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
@@ -54,9 +54,16 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}" />
-            <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-input-error for="name" class="mt-2" />
+            <x-label for="fname" value="{{ __('First Name') }}" />
+            <x-input id="fname" type="text" class="mt-1 block w-full" wire:model.defer="state.fname" autocomplete="name" />
+            <x-input-error for="fname" class="mt-2" />
+        </div>
+
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="lname" value="{{ __('Last Name') }}" />
+            <x-input id="lname" type="text" class="mt-1 block w-full" wire:model.defer="state.lname" autocomplete="name" />
+            <x-input-error for="lname" class="mt-2" />
         </div>
 
         <!-- Email -->
@@ -68,8 +75,8 @@
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
                     {{ __('Your email address is unverified.') }}
-
-                    <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click.prevent="sendEmailVerification">
+                    <br>
+                    <button type="button" class="btn btn-info" wire:click.prevent="sendEmailVerification">
                         {{ __('Click here to re-send the verification email.') }}
                     </button>
                 </p>
@@ -89,7 +96,7 @@
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Save Changes') }}
         </x-button>
     </x-slot>
 </x-form-section>

@@ -17,12 +17,14 @@ trait UserTrait{
                     'fname' => $request->input('fname'),
                     'lname' => $request->input('lname'),
                     'email' => $request->input('email'),
+                    "current_team_id" => $request->input('hotel_id'),
                     'password' => Hash::make($password),
                     'terms' => 'accepted'
                 ]);
                 
                 Guest::create([
                     'user_id' => $user->id,
+                    'team_id' => $request->input('hotel_id'),
                     'country' => $request->input('country')
                 ]);
                 return $user;
@@ -36,7 +38,7 @@ trait UserTrait{
     }
 
     public function getGuests(){
-        return Guest::with('users')->get();
+        return Guest::with('user')->get();
     }
 }
 

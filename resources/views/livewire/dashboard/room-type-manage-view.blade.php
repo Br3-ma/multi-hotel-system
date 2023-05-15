@@ -5,7 +5,19 @@
             <div class="card-action coin-tabs mb-2">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#AllRooms">All Room Types</a>
+                        <a class="nav-link active" data-bs-toggle="tab" href="#AllRooms">
+                            All Room Types
+                        </a>
+                    </li>
+                    <li>
+                        <span class="mr-8">
+                            <a href="#" class="btn" wire:click="'render'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                </svg>
+                            </a>
+                        </span>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#ActiveEmployee">Active Room Types</a>
@@ -14,6 +26,7 @@
                         <a class="nav-link" data-bs-toggle="tab" href="#InactiveEmployee">Inactive Room Types</a>
                     </li> --}}
                 </ul>
+           
             </div>
             <div class="d-flex align-items-center mb-2"> 
 
@@ -43,6 +56,7 @@
                                             {{ session('error') }}
                                         </div>
                                     @endif
+
                                     <div class="mt-3 flex justify-center" wire:loading>
                                         <p>Processing...</p>
                                         {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
@@ -107,7 +121,9 @@
                                                             </a>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="{{ route('edit-room-type', $type->id) }}">Edit</a>
-                                                                <a class="dropdown-item" href="{{ route('delete-room-type', $type->id)}}">Delete</a>
+                                                                <a class="dropdown-item" href="{{ route('delete-room-type', $type->id)}}" onclick="confirm('Are you sure you want to delete this room with all its rooms\nWarning: This will delete the associated bookings as well.') || event.stopImmediatePropagation();">
+                                                                    Delete
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </td>

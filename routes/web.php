@@ -6,6 +6,8 @@ use App\Http\Livewire\Dashboard\BookingCalendarView;
 use App\Http\Livewire\Dashboard\BookingInquiringView;
 use App\Http\Livewire\Dashboard\BookingManageView;
 use App\Http\Livewire\Dashboard\EditRoomTypeView;
+use App\Http\Livewire\Dashboard\GuestInfoView;
+use App\Http\Livewire\Dashboard\GuestView;
 use App\Http\Livewire\Dashboard\IndexView;
 use App\Http\Livewire\Dashboard\ReservationView;
 use App\Http\Livewire\Dashboard\RoomManageView;
@@ -43,10 +45,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/booking-inquiries', BookingInquiringView::class)->name('inquiries');
 
 
-
+    
     Route::post('/create-room-type', [RoomsController::class, 'createRoomType'])->name('create-room-type');    
     Route::post('/update-room-type', [RoomsController::class, 'editRoomType'])->name('update-room-type');    
     Route::get('/edit-room-type/{id}', EditRoomTypeView::class)->name('edit-room-type');    
     Route::get('/delete-room-type/{id}', [RoomsController::class, 'deleteRoomType'])->name('delete-room-type');    
+    Route::get('/delete-room/{id}', [RoomsController::class, 'deleteRoom'])->name('delete-room');    
     Route::post('/create-room', [RoomsController::class, 'createRoom'])->name('create-room');
+     
+    Route::get('/guests', GuestView::class)->name('guests');
+    Route::get('/guest-information/{id}', GuestInfoView::class)->name('guest-info');
+
 });

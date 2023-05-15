@@ -22,7 +22,7 @@ class RoomsController extends Controller
             return response()->json([
                 'title' => 'New Room Type',
                 'message' => 'Failed to create room type, check your entries and try again.',
-                'code' => 'success'
+                'code' => 'error'
             ]);
         }
     }
@@ -39,7 +39,7 @@ class RoomsController extends Controller
             return response()->json([
                 'title' => 'Update Room Type',
                 'message' => 'Failed to update room type, check your entries and try again.',
-                'code' => 'success'
+                'code' => 'error'
             ]);
         }
     }
@@ -56,7 +56,7 @@ class RoomsController extends Controller
             return response()->json([
                 'title' => 'New Room',
                 'message' => 'Failed to create room type, check your entries and try again.',
-                'code' => 'success'
+                'code' => 'error'
             ]);
         }
     }
@@ -64,9 +64,18 @@ class RoomsController extends Controller
     public function deleteRoomType($id){
         $data = $this->removeRoomType($id);
         if($data){
-            return redirect()->route('manage-room-types')->with('success', 'Room Type Removed!');
+            return redirect()->back()->with('success', 'Room Type Removed!');
         }else{
-            return redirect()->route('manage-room-types')->with('error', 'Can not remove room type!');
+            return redirect()->back()->with('error', 'Can not remove room type!');
+        }
+    }
+
+    public function deleteRoom($id){
+        $data = $this->removeRoom($id);
+        if($data){
+            return redirect()->back()->with('success', 'Room Type Removed!');
+        }else{
+            return redirect()->back()->with('error', 'Can not remove room type!');
         }
     }
 }

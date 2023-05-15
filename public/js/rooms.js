@@ -31,6 +31,7 @@ $(function() {
                     toastr.options.closeHtml = '<button class="closebtn"><i class="bi bi-x"></i></button>';
                     toastr.error(response.title, response.message);
                 }
+                location.reload();
             },
             error: function(xhr, status, error) {
                 // handle errors
@@ -73,6 +74,7 @@ $(function() {
                 }
                 
                 $('.create-room-modal-lg').modal('hide');
+                location.reload();
             },
             error: function(xhr, status, error) {
                 // handle errors
@@ -101,16 +103,19 @@ $(function() {
                 // handle the response from the server
                 if(response.code === 'success'){
                     toastr.options.closeHtml = '<button class="closebtn"><i class="bi bi-x"></i></button>';
+                    toastr.options.positionClass = 'toast-bottom-right';
                     toastr.info(response.title, response.message);
                 }
 
                 if(response.code === 'warning'){
                     toastr.options.closeHtml = '<button class="closebtn"><i class="bi bi-x"></i></button>';
+                    toastr.options.positionClass = 'toast-bottom-right';
                     toastr.warning(response.title, response.message);
                 }
 
                 if(response.code === 'error'){
                     toastr.options.closeHtml = '<button class="closebtn"><i class="bi bi-x"></i></button>';
+                    toastr.options.positionClass = 'toast-bottom-right';
                     toastr.error(response.title, response.message);
                 }
                 

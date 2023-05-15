@@ -20,7 +20,8 @@ trait BookTrait {
 
     // Get all Booking inquiries
     public function getBookingInquiries(){
-        return Reservation::where('team_id', auth()->user()->currentTeam->id)->paginate(5);
+        return Reservation::where('team_id', auth()->user()->currentTeam->id)
+        ->orderByDesc('created_at')->paginate(5);
         // return Reservation::get()->paginate(10);
     }
 
@@ -28,13 +29,37 @@ trait BookTrait {
     public function getBookings(){
         return Booking::where('booking_status', 1)
         ->where('team_id', auth()->user()->currentTeam->id)
-        ->with('room.room_types')->with('guests.users')->get();
+        ->orderByDesc('created_at')
+        ->with('room.room_types')->with('guests.user')->get();
     }    
     // public function getBookings(){
     //     return Booking::where('booking_status', 1)
     //     ->where('team_id', auth()->user()->currentTeam->id)
     //     ->with('room.room_types')->with('guests.users')->get();
     // }
+
+    // Get all Booking inquiries
+    public function hasCurrentBooking($guest_id){
+        return Booking::orderByDesc('created_at')->where('guests_id', $guest_id)->exists();
+        // return Reservation::get()->paginate(10);
+    }
+
+    public function hasCurrentReservation($guest_id){
+        return Reservation::orderByDesc('created_at')->where('guests_id', $guest_id)->exists();
+    }
+
+    public function getLastBooking($guest_id){
+        return Booking::orderByDesc('created_at')->with('room.room_types')->where('guests_id', $guest_id)->first();
+    }
+
+    public function getLastReservation($guest_id){
+        return Reservation::orderByDesc('created_at')->where('guests_id', $guest_id)->first();
+    }
+    
+    // Get all Booking inquiries    
+    public function getCustomerBookings($guest_id){
+        return Booking::orderByDesc('created_at')->where('guests_id', $guest_id)->get();
+    }
 
     // Returns all booked rooms with booking information dates
     public function getCalendarBookings(){
@@ -201,7 +226,7 @@ trait BookTrait {
         // Enter reservation information
         try {
             $data = Booking::create([
-                'guests_id' => $data['user_id'],
+                'guests_id' => $data['guest_id'],
                 'team_id' => $data['team_id'] ?? $data['hotel_id'] ,
                 'rooms_id' => $data['room_id'],
                 // 'reservations_id' => $data['reserve_id'] ?? '',

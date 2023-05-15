@@ -33,7 +33,7 @@ class Guest extends Model
     //     return $data->fname.' '.$data->lname;
     // }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
 

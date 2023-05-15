@@ -114,8 +114,8 @@
                                                                 </svg>
                                                             </a>
                                                             <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                                                {{-- <a class="dropdown-item" href="javascript:void(0);">Edit</a> --}}
+                                                                <a class="dropdown-item bg-danger text-white" href="{{ route('delete-room', $room->id)}}" onclick="confirm('Are you sure you want to delete this room with all its rooms\nWarning: This will delete the associated bookings as well.') || event.stopImmediatePropagation();">Delete</a>
                                                             </div>
                                                         </div>
                                                     </td>
