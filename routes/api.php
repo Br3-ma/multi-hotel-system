@@ -19,6 +19,7 @@ Route::get('/get-room-types/{id}', [MyApiController::class, 'getRoomTypes']);
 Route::post('/calculate-price', [MyApiController::class, 'calculatePrice']);
 Route::post('/check-availability', [MyApiController::class, 'checkRoomAvailability']);
 Route::post('/create-booking', [MyApiController::class, 'makeBooking']);
+Route::post('/make-reservations', [MyApiController::class, 'makeReservations']);
 
 Route::middleware('auth:sanctum')->group(function () {
 

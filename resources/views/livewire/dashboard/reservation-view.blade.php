@@ -48,7 +48,7 @@
                                         <p>Processing...</p>
                                         {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
                                     </div>
-                                    <table wire:loading.removeid="example3" wire:ignore.self wire:poll.50000ms class="table card-table display p-4 mb-4 shadow-hover default-table table-responsive-lg">
+                                    <table wire:loading.remove id="example3" wire:ignore.self wire:poll.500000ms class="table card-table display p-4 mb-4 shadow-hover default-table table-responsive-lg">
                                         <thead>
                                             <tr>
                                                 <th class="bg-none">
@@ -168,6 +168,11 @@
                                         </tbody>
                                     </table>
                                 </div>	
+                                <div class="flex justify-end">
+                                    <div class="pagination flex justify-center mt-8 text-xs sm:text-xs">
+                                        {{ $inquiries->links() }}
+                                    </div>
+                                </div>
                             </div>	
 
                              <div class="tab-pane" id="Pending">

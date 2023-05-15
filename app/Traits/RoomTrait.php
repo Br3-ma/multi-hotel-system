@@ -22,6 +22,9 @@ trait RoomTrait {
     public function getAllRooms($team_id){
         return Room::with('staff')->where('team_id', $team_id)->orderByDesc('created_at')->with('room_types')->paginate(5);
     }
+    public function getAllRooms2($team_id){
+        return Room::with('staff')->where('team_id', $team_id)->orderByDesc('created_at')->with('room_types')->get();
+    }
 
     // For API use
     public function getAllRoomTypes2($team_id){
@@ -30,6 +33,9 @@ trait RoomTrait {
 
     public function getAvailableRooms(){
         return Room::where('is_available', 1)->where('team_id', auth()->user()->currentTeam->id)->orderByDesc('created_at')->with('staff')->with('room_types')->get();
+    }
+    public function getAvailableRooms2($team_id){
+        return Room::where('is_available', 1)->where('team_id', $team_id)->orderByDesc('created_at')->with('staff')->with('room_types')->get();
     }
     
     // public function getAllRoomTypes(){

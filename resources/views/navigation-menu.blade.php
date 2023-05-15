@@ -89,9 +89,9 @@
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                             <img src="https://www.lightstalking.com/wp-content/uploads/Wildlife-Photographs-01.jpg" alt="">
-                            <div class="header-info ms-3">
-                                <span>{{ auth()->user()->fname.' '.auth()->user()->lname }}</span>
-                                <small>Superadmin</small>
+                            <div class="header-info text-primary ms-3">
+                                <span class="text-primary">{{ auth()->user()->fname.' '.auth()->user()->lname }}</span>
+                                <small class="text-primary">Superadmin</small>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">

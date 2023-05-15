@@ -10,10 +10,11 @@ use App\Traits\BookTrait;
 use App\Traits\RoomTrait;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ReservationView extends Component
 {
-    use BookTrait, RoomTrait;
+    use BookTrait, RoomTrait, WithPagination;
     public $message, $optresp;
     public $user;
     public $inquiry_id = null;
@@ -25,8 +26,9 @@ class ReservationView extends Component
     public function render()
     {
 
-        $this->rooms = $this->getAllRooms(auth()->user()->currentTeam->id);
-        $inquiries = Reservation::get();
+        $this->rooms = $this->getAvailableRooms2(auth()->user()->currentTeam->id);
+    
+        $inquiries = Reservation::paginate(10);
         return view('livewire.dashboard.reservation-view',[
             'inquiries'=>$inquiries
         ]);

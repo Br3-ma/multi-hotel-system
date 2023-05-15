@@ -175,13 +175,17 @@ trait BookTrait {
 
     public function makeReservation($request){
         $admin = User::where('id', 1)->first();
-        
+        // dd($request->input('hotel_id'));
+        $r = RoomType::where('team_id', $request->input('hotel_id'))
+                ->orWhere('name', $request->input('room_type'))
+                ->orWhere('id', $request->input('room_type'))->first();
+                
         // Enter User Information
         $user = $this->registerUser($request);
         $in = $this->convertNormal($request->input('check_in_date'));
         $out = $this->convertNormal($request->input('check_out_date'));
         $nights = $this->numOfDays($in, $out);
-        $total_bill = $nights * RoomType::where('name', $request->input('room_type'))->first()->price;
+        $total_bill = $nights * $r->price ?? 0;
      
         $data = Reservation::create([
             'guests_id' => $user->id,

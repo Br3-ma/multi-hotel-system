@@ -58,7 +58,6 @@ class MyApiController extends Controller
 
     public function makeBooking(Request $request){
         $req = $request->toArray();
-
         try {
             $user = $this->registerUser($request);
             $room = Room::where('room_number', $req['room_id'])
@@ -91,6 +90,22 @@ class MyApiController extends Controller
             return response()->json([
                 'message' =>'Room booking failed. Room not found',
                 'user' => $user,
+                'code' => 500
+            ]);
+        }
+    }
+
+    public function makeReservations(Request $request)
+    {
+        $data = $this->makeReservation($request);
+        if($data){
+            return response()->json([
+                'message' =>'Room successfully booked',
+                'code' => 200
+            ]);
+        }else{
+            return response()->json([
+                'message' =>'Room booking failed. Room not found',
                 'code' => 500
             ]);
         }
