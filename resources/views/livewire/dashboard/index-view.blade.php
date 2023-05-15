@@ -144,7 +144,7 @@
                                             <span class="donut" data-peity='{ "fill": ["var(--primary)", "rgba(246, 246, 246)"],   "innerRadius": 45, "radius": 10}'>6/8</span>
                                         </div> --}}
                                         <div>
-                                            <h2>{{$tt_in}}</h2>
+                                            <h2>{{ $tt_in }}</h2>
                                             <span class="fs-18">Check In</span>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                             <span class="donut" data-peity='{ "fill": ["#FFC368", "rgba(246, 246, 246)"],   "innerRadius": 45, "radius": 10}'>2/8</span>
                                         </div> --}}
                                         <div>
-                                            <h2>{{$tt_out}}</h2>
+                                            <h2>{{ $tt_out }}</h2>
                                             <span class="fs-18">Check Out</span>
                                         </div>
                                     </div>

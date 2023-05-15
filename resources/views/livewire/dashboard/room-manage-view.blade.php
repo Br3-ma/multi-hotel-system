@@ -30,8 +30,12 @@
                     <div class="card-body p-0">
                         <div class="tab-content">	
                             <div class="tab-pane fade active show" id="AllRooms">
-                                <div class="table-responsive">
-                                    <table wire:ignore.self wire:poll.50000ms class="table card-table display mb-4 shadow-hover table-responsive-lg" id="guestTable-all3">
+                                <div class="table-responsive">                                    
+                                <div class="mt-3 flex justify-center" wire:loading>
+                                    <p>Processing...</p>
+                                    {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
+                                </div>
+                                <table wire:loading.remove wire:poll.50000ms class="table card-table display mb-4 shadow-hover table-responsive-lg" id="guestTable-all3">
                                         <thead>
                                             <tr>
                                                 <th class="bg-none">

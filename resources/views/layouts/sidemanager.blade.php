@@ -9,7 +9,7 @@
                 <a class="nav-link" data-bs-toggle="tab" href="#alerts">Alerts</a>
             </li> --}}
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#chat">Hotels</a>
+                <a class="nav-link active" data-bs-toggle="tab" href="#chat">Loges</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -23,7 +23,7 @@
                                 </g>
                             </svg></a>
                         <div>
-                            <h6 class="mb-1">Hotel List</h6>
+                            <h6 class="mb-1">All Loges </h6>
                         </div>
                         <a  href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -59,7 +59,7 @@
                                 @endforeach
                             @endif
                             <div style="text-align:center">
-                                <a href="{{ route('manage-hotels') }}">Manage Hotels</a>
+                                <a href="{{ route('manage-hotels') }}">Manage Loges</a>
                             </div>
                             
                             {{-- <li class="name-first-letter">B</li>
