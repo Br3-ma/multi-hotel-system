@@ -8,7 +8,7 @@ use Livewire\Component;
 class RoomManageView extends Component
 {
     use RoomTrait;
-    public $rooms, $room_types;
+    public $room_types;
 
     public function render()
     {
