@@ -225,8 +225,8 @@ trait BookTrait {
                 'type' => 'booking'
             ];
 
-            // Notification::send($admin, new BookingInquiryNotification($note));
-            // Notification::send($user, new GuestInquiryNotification($note));
+            Notification::send($admin, new BookingInquiryNotification($note));
+            Notification::send($user, new GuestInquiryNotification($note));
         } catch (\Throwable $th) {
             return false;
         }

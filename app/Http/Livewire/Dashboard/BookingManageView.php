@@ -43,18 +43,19 @@ class BookingManageView extends Component
         $booking->save();
 
         $this->toggleRoomStatus($booking->rooms_id);
-        session()->flash('success', 'Room successfully booked.');
+        session()->flash('success', 'Room checked out.');
     }
 
     
 
     public function makeBooking(){
         try {
+            
             $user = $this->registerGustUser();
             $room = Room::where('id', $this->book_room_id)
                         ->where('team_id', auth()->user()->currentTeam->id)
                         ->where('is_available', 1)->with('room_types')->first();
-
+            // dd($room !== null);
             if($room !== null){
                 $room->is_available = 0;
                 $room->save();

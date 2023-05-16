@@ -82,6 +82,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <select wire:model="book_room_id" class="default-select wide form-control" id="validationCustom05">
+                                            <option value="0">-- Choose --</option>
                                             @forelse($rooms as $room)
                                                 <option value="{{ $room->id }}">{{ $room->id.'Room# '.$room->room_number.' | '.$room->floor }}</option>
                                             @empty
