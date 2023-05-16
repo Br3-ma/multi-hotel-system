@@ -76,6 +76,7 @@ class BookingManageView extends Component
                 session()->flash('error', 'Room already booked, check the calendar for available dates.');
             }
         } catch (\Throwable $th) {
+            dd($th);
             session()->flash('error', 'Connection failure, email failed to send.');
         }
     }
