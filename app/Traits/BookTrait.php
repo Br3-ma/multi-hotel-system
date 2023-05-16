@@ -108,37 +108,14 @@ trait BookTrait {
             
             
         }
-// events: [
-// 	{
-// 	title: 'Booked Rooms',
-// 	url: 'http://google.com/',
-// 	start: '2023-03-07',
-// 	end: '2023-03-10',
-// 	className: "bg-danger"
-// 	},
-// 	{
-// 	title: 'Available Rooms',
-// 	url: 'http://google.com/',
-// 	start: '2023-03-07',
-// 	end: '2023-03-09',
-// 	className: "bg-success"
-// 	}
-// 	// {
-// 	// title: 'Conference',
-// 	// url: 'http://google.com/',
-// 	// start: '2023-03-12T20:00:00',
-// 	// end: '2023-03-13T20:00:00',
-// 	// className: "bg-warning"
-// 	// },
-// ]
         return $events;
         
 
         // // Merge available rooms
-        foreach ($bookings as $a) {
-           $x = $this->getFreeRoomOnDate($a['checkin_date'], $a['checkout_date']);
-            //   dd($x);
-        }
+        // foreach ($bookings as $a) {
+        //    $x = $this->getFreeRoomOnDate($a['checkin_date'], $a['checkout_date']);
+        //     //   dd($x);
+        // }
     }
 
     // Returns all available rooms on a specific date range
@@ -148,8 +125,6 @@ trait BookTrait {
 
 
     public function checkAvailability($request){
-
-
         $data = $request->toArray();
 
         return Room::with('room_types')
@@ -165,7 +140,6 @@ trait BookTrait {
     public function checkNextAvailability($request){
         $data = $request->toArray();
         $booked = Booking::get();
-
 
         return Room::with('room_types')
         ->where('room_types_id', $data['room_type'])
@@ -226,7 +200,7 @@ trait BookTrait {
 
     public function saveBooking($data){
         $admin = User::first();
-        // $user = User::where('id', );
+        $user = User::where('id', $data['guest_id'])->first();
         // Enter reservation information
         try {
             $data = Booking::create([
@@ -251,11 +225,11 @@ trait BookTrait {
                 'type' => 'booking'
             ];
 
-            // Notification::send($admin, new BookingInquiryNotification($note));
+            Notification::send($admin, new BookingInquiryNotification($note));
+            Notification::send($user, new GuestInquiryNotification($note));
         } catch (\Throwable $th) {
-            dd($th);
+            return false;
         }
-        // Notification::send($user, new GuestInquiryNotification($note));
         if(!empty($data->toArray())){
             return $data;
         }else{

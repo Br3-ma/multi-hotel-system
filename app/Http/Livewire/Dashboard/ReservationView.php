@@ -56,6 +56,7 @@ class ReservationView extends Component
                 'adults' =>  $this->reservation->num_adults,
                 'children' =>  $this->reservation->num_children,
                 'price' =>  $room->room_types->price,
+                'hotel_id' =>  auth()->user()->currentTeam->id
             ];
             $this->saveBooking($data);
             session()->flash('success', 'Room successfully booked.');

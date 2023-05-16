@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title">Record New Booking</h5>
+                <h5 class="modal-title text-white">Record New Booking</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>

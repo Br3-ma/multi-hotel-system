@@ -4,6 +4,7 @@
             <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white">Record New Booking</h5>
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal">
+                    x
                 </button>
             </div>
             <form id="create-room-form" action="{{ route('create-room') }}" class="needs-validation" validate enctype="multipart/form-data">

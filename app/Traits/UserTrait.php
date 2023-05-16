@@ -38,7 +38,7 @@ trait UserTrait{
     }
 
     public function getGuests(){
-        return Guest::with('user')->get();
+        return Guest::where('team_id', auth()->user()->currentTeam->id)->with('user')->get();
     }
 }
 
