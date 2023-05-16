@@ -61,7 +61,7 @@
                                         <label class="col-lg-6 col-form-label" for="validationCustom01">
                                             Arriving On
                                         </label>
-                                        <input type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="checkin_date"  placeholder="" required>
+                                        <input type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="checkin_date"  placeholder="yyyy-mm-dd" required>
                                         <div class="invalid-feedback">
                                             Please enter a room type name.
                                         </div>
@@ -95,7 +95,7 @@
                                         <label class="col-lg-6 col-form-label" for="validationCustom01">Departing On
                                             <span class="text-danger">*</span>
                                         </label>
-                                        <input type="text" class="date form-control" id="validationCustom01" wire:model.defer="checkout_date"  placeholder="" required>
+                                        <input type="text" class="date form-control" id="validationCustom01" wire:model.defer="checkout_date"  placeholder="yyyy-mm-dd" required>
                                         <div class="invalid-feedback">
                                             Date of checking out
                                         </div>

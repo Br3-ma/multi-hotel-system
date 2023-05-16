@@ -72,7 +72,7 @@
 	<script src="{{ asset('theme/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
 	<!-- Dashboard 1 -->
 	<script src="{{ asset('theme/js/dashboard/dashboard-1.js')}}"></script>
-	<script src="{{ asset('theme/js/custom.min.js')}}"></script>
+	<script src="{{ asset('theme/js/custom.min.js')}}"></script>    
     <script src="{{ asset('theme/js/main.min.js')}}"></script>
 	{{-- <script src="{{ asset('theme/js/fullcalendar-init.js')}}"></script> --}}
 	<script src="{{ asset('theme/js/jquery.nice-select.min.js')}}"></script>
