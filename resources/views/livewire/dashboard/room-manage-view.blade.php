@@ -73,17 +73,17 @@
                                                     <td>
                                                         <div class="room-list-bx d-flex align-items-center">
                                                             <div>
-                                                                <span class=" fs-16 font-w500 text-nowrap">{{$room->room_number}}</span>
+                                                                <span class=" fs-16 font-w500 text-nowrap">{{ $room->room_number }}</span>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class="">
-                                                        <span class="fs-16 font-w500 text-nowrap">{{$room->bed_type}}</span>
+                                                        <span class="fs-16 font-w500 text-nowrap">{{ $room->bed_type }}</span>
                                                     </td>
                                                     <td>
                                                         <div>
                                                             
-                                                            <span class="fs-16 font-w500">{{$room->floor ?? ''}}</span>
+                                                            <span class="fs-16 font-w500">{{ $room->floor ?? ''}}</span>
                                                         </div>
                                                     </td>
                                                     <td class="facility">

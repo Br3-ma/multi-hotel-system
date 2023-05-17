@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Api\RoomsController;
 use App\Http\Livewire\Admin\Hotels\ManageHotelView;
+use App\Http\Livewire\Dashboard\AgentView;
 use App\Http\Livewire\Dashboard\BookingCalendarView;
 use App\Http\Livewire\Dashboard\BookingInquiringView;
 use App\Http\Livewire\Dashboard\BookingManageView;
 use App\Http\Livewire\Dashboard\EditRoomTypeView;
+use App\Http\Livewire\Dashboard\EditUserView;
 use App\Http\Livewire\Dashboard\GuestInfoView;
 use App\Http\Livewire\Dashboard\GuestView;
 use App\Http\Livewire\Dashboard\IndexView;
@@ -54,6 +56,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/create-room', [RoomsController::class, 'createRoom'])->name('create-room');
      
     Route::get('/guests', GuestView::class)->name('guests');
+    Route::get('/agents', AgentView::class)->name('agents');
     Route::get('/guest-information/{id}', GuestInfoView::class)->name('guest-info');
+    Route::get('/edit-details/{id}', EditUserView::class)->name('edit-user');
 
 });

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guest extends Model
+class Agent extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,8 +13,8 @@ class Guest extends Model
         'team_id',
         'added_by',
         'phone_number',
-        'gender',
         'level',
+        'gender',
         'id_type',
         'id_number',
         'address',
@@ -43,17 +43,5 @@ class Guest extends Model
 
     public function added_by(){
         return $this->belongsTo(User::class, 'added_by');
-    }
-
-    public function reservations(){
-        return $this->hasMany(Reservation::class);
-    }
-
-    public function bookings(){
-        return $this->hasMany(Booking::class);
-    }
-
-    public function payments(){
-        return $this->hasMany(Payment::class);
     }
 }

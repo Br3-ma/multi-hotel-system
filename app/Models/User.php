@@ -93,6 +93,10 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
     
+    public function agents(){
+        return $this->hasOne(Agent::class);
+    }
+    
     public function guests(){
         return $this->hasOne(Guest::class);
     }

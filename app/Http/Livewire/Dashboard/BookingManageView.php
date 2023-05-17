@@ -51,7 +51,7 @@ class BookingManageView extends Component
     public function makeBooking(){
         try {
             
-            $user = $this->registerGustUser();
+            $user = $this->registerGuestUser();
             $room = Room::where('id', $this->book_room_id)
                         ->where('team_id', auth()->user()->currentTeam->id)
                         ->where('is_available', 1)->with('room_types')->first();
@@ -82,7 +82,7 @@ class BookingManageView extends Component
         }
     }
 
-    public function registerGustUser(){
+    public function registerGuestUser(){
         $password = 'asmara4Gud';
         $check = User::where('email', $this->email)->first();
         if($check == null){

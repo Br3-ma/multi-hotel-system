@@ -1,17 +1,16 @@
 <?php
-
 namespace App\Http\Livewire\Dashboard;
 
+use App\Models\Agent;
 use App\Models\Guest;
 use App\Models\User;
 use App\Traits\BookTrait;
 use App\Traits\RoomTrait;
-use App\Traits\UserTrait;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class GuestView extends Component
+class AgentView extends Component
 {
     use RoomTrait, BookTrait, WithPagination;
     public $rooms;
@@ -21,9 +20,9 @@ class GuestView extends Component
     {
         // Get Booking with room information
         $this->rooms = $this->getAvailableRooms2(auth()->user()->currentTeam->id);
-        $users = Guest::where('team_id', auth()->user()->currentTeam->id)->orderByDesc('created_at')->with('user')->paginate(10);
+        $users = Agent::where('team_id', auth()->user()->currentTeam->id)->orderByDesc('created_at')->with('user')->paginate(10);
 
-        return view('livewire.dashboard.guest-view',[
+        return view('livewire.dashboard.agent-view',[
             'users' => $users
         ]);
     }
@@ -52,7 +51,7 @@ class GuestView extends Component
                     'terms' => 'accepted'
                 ]);
                 
-                Guest::create([
+                Agent::create([
                     'user_id' => $user->id,
                     'team_id' => auth()->user()->currentTeam->id,
                     'country' => $this->country,
@@ -62,6 +61,7 @@ class GuestView extends Component
                     'id_number' => $this->id_number,
                     'phone_number' => $this->phone_number
                 ]);
+
                 return true;
             } catch (\Throwable $th) {
                 return false;
@@ -72,3 +72,4 @@ class GuestView extends Component
         
     }
 }
+

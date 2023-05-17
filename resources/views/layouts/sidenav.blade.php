@@ -18,6 +18,7 @@
                     <li><a href="{{ route('reservations') }}">Reservations</a></li>
                     <li><a href="{{ route('bookings') }}">Bookings</a></li>
                     <li><a href="{{ route('guests') }}">Guests</a></li>
+                    <li><a href="{{ route('agents') }}">Agents</a></li>
                 </ul>
             </li>
             <li>

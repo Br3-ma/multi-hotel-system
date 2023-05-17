@@ -5,7 +5,7 @@
             <div class="card-action coin-tabs mb-2">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#AllRooms">Guest List</a>
+                        <a class="nav-link active" data-bs-toggle="tab" href="#AllRooms">Agent List</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#ActiveEmployee">Active Room Types</a>
@@ -13,7 +13,7 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#InactiveEmployee">Inactive Room Types</a>
                     </li> --}}
-                    <button data-bs-toggle="modal" data-bs-target=".create-guest-modal-lg" class="btn btn-secondary">+ New Guest</button>
+                    <button data-bs-toggle="modal" data-bs-target=".create-agent-modal-lg" class="btn btn-secondary">+ New Agent</button>
 
                 </ul>
                 
@@ -96,6 +96,11 @@
                                                             <span class="fs-16 comments">{{ $guest->user->created_at }}</span>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div>
+                                                            <a target="_blank" href="{{ route('edit-user', $guest->user->id) }}">Edit</a>
+                                                        </div>
+                                                    </td>
                                                     
                                                 </tr>
                                             @empty
@@ -117,5 +122,5 @@
         </div>
     </div>
     {{-- Modals --}}
-    @include('livewire.dashboard.__partials.guest.__create-guest')
+    @include('livewire.dashboard.__partials.agent.__create-agent')
 </div>
