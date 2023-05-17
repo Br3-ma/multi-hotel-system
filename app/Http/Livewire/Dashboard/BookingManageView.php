@@ -46,8 +46,6 @@ class BookingManageView extends Component
         session()->flash('success', 'Room checked out.');
     }
 
-    
-
     public function makeBooking(){
         try {
             
@@ -63,7 +61,6 @@ class BookingManageView extends Component
                 $data = [
                     'guest_id' => $user->id,
                     'room_id' => $this->book_room_id,
-                    'reserve_id' => 'None',
                     'in' => $this->checkin_date,
                     'out' =>  $this->checkout_date,
                     'adults' =>  $this->num_adults,
@@ -77,7 +74,6 @@ class BookingManageView extends Component
                 session()->flash('error', 'Room already booked, check the calendar for available dates.');
             }
         } catch (\Throwable $th) {
-            dd($th);
             session()->flash('error', 'Connection failure, email failed to send.');
         }
     }

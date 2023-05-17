@@ -200,38 +200,50 @@ trait BookTrait {
 
     public function saveBooking($data){
         $admin = User::first();
-        $user = User::where('id', $data['guest_id'])->first();
         // Enter reservation information
-        try {
-            $data = Booking::create([
-                'guests_id' => $data['guest_id'],
-                'team_id' => $data['team_id'] ?? $data['hotel_id'] ,
-                'rooms_id' => $data['room_id'],
-                // 'reservations_id' => $data['reserve_id'] ?? '',
-                // 'user_id' => auth()->user()->id ?? '',
-                'booking_code' => Str::orderedUuid(4),
-                'checkin_date' => $data['in'],
-                'checkout_date' => $data['out'],
-                'num_adults' => $data['adults'],
-                'num_children' => $data['children'],
-                'booking_date' => now(),
-                'total_price' => $data['price'],
-                'payment_status' => 1,
-                'booking_status' => 1
-            ]);
-
-            $note = [
-                'msg' => "Booked Room. Date checked in ".$data['in']." and Date of Check-out ".$data['out'],
-                'type' => 'booking'
-            ];
-
-            Notification::send($admin, new BookingInquiryNotification($note));
-            Notification::send($user, new GuestInquiryNotification($note));
-        } catch (\Throwable $th) {
-            return false;
+        if (isset($data['reserve_id'])) {
+            $reserv = Reservation::where('id', $data['reserve_id'])->first();
         }
-        if(!empty($data->toArray())){
-            return $data;
+        $theroom = Room::with('room_types')->where('id', $data['room_id'])->first();
+        // $in = $this->convertNormal($data['in']);
+        // $out = $this->convertNormal($data['out']);
+        $nights = $this->numOfDays($data['in'], $data['out']);
+        $total_bill = $nights * RoomType::where('name', $theroom->room_types->name)->first()->price;
+        
+        $book = Booking::create([
+            'guests_id' => $data['guest_id'],
+            'rooms_id' => $data['room_id'],
+            'team_id' => $data['team_id'] ?? $data['hotel_id'] ,
+            'reservations_id' => isset($data['reserve_id']) ? $data['reserve_id'] : null,
+            'user_id' => auth()->user()->id,
+            'booking_code' => Str::orderedUuid(4),
+            'checkin_date' => $data['in'],
+            'checkout_date' => $data['out'],
+            'num_adults' => $data['adults'],
+            'num_children' => $data['children'],
+            'booking_date' => now(),
+            'total_price' => $data['price'],
+            'payment_status' => 1,
+            'booking_status' => 1
+        ]);
+
+        $note = [
+            'name' => Reservation::fullName($data['guest_id']),
+            'msg' => "Booked Room. Date checked in ".$data['in']." and Date of Check-out ".$data['out'],
+            'type' => 'booking',
+            'room_type' => $theroom->room_types->name,
+            'special_req' =>  isset($data['reserve_id']) ?  $reserv->special_requests : 'None',
+            'in' => $data['in'],
+            'out' => $data['out'],
+            'bill' => 'K'.$total_bill,
+            'duration' => $nights,
+            'user_id' => $data['guest_id'],
+            'data_id' => $book->id
+        ];
+        Notification::send($admin, new BookingInquiryNotification($note));
+        Notification::send($this->user, new GuestInquiryNotification($note));
+        if(!empty($book->toArray())){
+            return true;
         }else{
             return false;
         }
