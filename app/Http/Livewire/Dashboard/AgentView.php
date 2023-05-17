@@ -71,5 +71,9 @@ class AgentView extends Component
         }
         
     }
+
+    public function remove($id){
+        Agent::where('id', $id)->first()->delete();
+    }
 }
 

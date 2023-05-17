@@ -16,13 +16,9 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center mb-2"> 
-                <button data-bs-toggle="modal" data-bs-target=".new-booking-modal-lg" class="btn btn-secondary">+ New Booking</button>
-                {{-- <div class="newest ms-3">
-                    <select class="default-select">
-                        <option>Newest</option>
-                        <option>Oldest</option>
-                    </select>
-                </div>	 --}}
+                <button data-bs-toggle="modal" data-bs-target=".new-booking-modal-lg" class="btn btn-secondary">
+                    + New Booking
+                </button>
             </div>
         </div>
         <div class="row mt-4">
@@ -103,7 +99,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="">
-                                                        <span class="fs-16 font-w500 text-nowrap">{{ $booking->room->bed_type }}</span>
+                                                        <span class="fs-16 font-w500 text-nowrap"> - </span>
                                                     </td>
                                                     <td>
                                                         <div>

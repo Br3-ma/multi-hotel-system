@@ -13,11 +13,10 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#InactiveEmployee">Inactive Room Types</a>
                     </li> --}}
-                    <button data-bs-toggle="modal" data-bs-target=".create-guest-modal-lg" class="btn btn-secondary">+ New Guest</button>
-
                 </ul>
-                
-
+            </div>
+            <div class="d-flex align-items-center mb-2"> 
+                <button data-bs-toggle="modal" data-bs-target=".create-guest-modal-lg" class="btn btn-secondary">+ New Guest</button>
             </div>
         </div>
         <div class="row mt-4">

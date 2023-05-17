@@ -86,7 +86,7 @@ trait BookTrait {
                 'className' => 'bg-info'
             ];
             array_push($events, $unbookedarr);
-            if(count($bookings) > 0){
+            if(count($bookings) < 0 ){
                 $freeSpots = [
                     'title' => $total_rooms - count($bookings).' Rooms Available',
                     'url' => '/calendar-and-bookings',

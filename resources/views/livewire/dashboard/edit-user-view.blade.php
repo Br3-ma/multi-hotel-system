@@ -1,8 +1,11 @@
 <div class="content-body">
     <div class="container-fluid">
             <div class="card">
-                <div class="card-content">
-                    <form id="create-room-form" class="needs-validation" validate enctype="multipart/form-data">
+                    <div class="card-content"><div class="mt-3 flex justify-center" wire:loading>
+                        <p>Processing...</p>
+                        {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
+                    </div>
+                    <form wire:loading.remove id="create-room-form" class="needs-validation" validate enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="col-lg-12">
@@ -24,7 +27,7 @@
                                                 <label class="col-lg-6 col-form-label" for="validationCustom01">First Name
                                                     <span class="text-danger">*</span>
                                                 </label>
-                                                <input value="{{ $user->fname }}" type="text" class="form-control input-default" id="validationCustom01" wire:model.defer="fname"  placeholder="" required>
+                                                <input type="text" class="form-control input-default" id="validationCustom01" wire:model.defer="fname">
                                                 <div class="invalid-feedback">
                                                     First Name
                                                 </div>
@@ -35,7 +38,7 @@
                                                 <label class="col-lg-6 col-form-label" for="validationCustom01">Last Name
                                                     <span class="text-danger">*</span>
                                                 </label>
-                                                <input value="{{ $user->lname }}" type="text" class="form-control input-default" id="validationCustom01" wire:model.defer="lname"  placeholder="" required>
+                                                <input value="{{ $user->lname }}" type="text" class="form-control input-default" id="validationCustom01" wire:model.defer="lname">
                                                 <div class="invalid-feedback">
                                                     Last Name
                                                 </div>
@@ -46,7 +49,7 @@
                                                 <label class="col-lg-6 col-form-label" for="validationCustom01">Email
                                                     <span class="text-danger">*</span>
                                                 </label>
-                                                <input value="{{ $user->email }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="email"  placeholder="" required>
+                                                <input value="{{ $user->email }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="email">
                                                 <div class="invalid-feedback">
                                                     ex. name@email.com
                                                 </div>
@@ -56,7 +59,7 @@
                                                 <label class="col-lg-6 col-form-label" for="validationCustom01">
                                                     Gender
                                                 </label>
-                                                <select type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="gender"  placeholder="yyyy-mm-dd">
+                                                <select type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="gender">
                                                     @if ($user->guests === null)
                                                     <option value="{{ $user->agents->email }}">{{ $user->agents->email }}</option>
                                                     @else
@@ -70,9 +73,9 @@
                                                 <label class="col-lg-6 col-form-label" for="validationCustom01">Phone Number
                                                 </label>
                                                 @if ($user->guests === null)
-                                                <input value="{{ $user->agents->phone_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="phone_number"  placeholder="ex. 260 999 999 999" required>
+                                                <input value="{{ $user->agents->phone_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="phone_number">
                                                 @else
-                                                <input value="{{ $user->guests->phone_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="phone_number"  placeholder="ex. 260 999 999 999" required>
+                                                <input value="{{ $user->guests->phone_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="phone_number">
                                                 @endif
                                                 <div class="invalid-feedback">
                                                     Please enter the total number of Adults to occupy the room.
@@ -85,7 +88,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 
-                                                <select type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_type"  placeholder="">                                                    
+                                                <select type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_type">                                                    
                                                     @if ($user->guests === null)
                                                         <option value="{{ $user->agents->id_type }}">{{ $user->agents->id_type }}</option>
                                                     @else
@@ -111,9 +114,9 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 @if ($user->guests === null)
-                                                <input value="{{ $user->agents->id_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_number"  placeholder="ex. 9999 9999 9999" required>
+                                                <input value="{{ $user->agents->id_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_number">
                                                 @else
-                                                <input value="{{ $user->guests->id_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_number"  placeholder="ex. 9999 9999 9999" required>
+                                                <input value="{{ $user->guests->id_number }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="id_number">
                                                 @endif
                                                 <div class="invalid-feedback">
                                                     Please enter the total number of Adults to occupy the room.
@@ -124,9 +127,9 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 @if ($user->guests === null)
-                                                <input value="{{ $user->agents->occupation }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="occupation"  placeholder="" required>
+                                                <input value="{{ $user->agents->occupation }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="occupation">
                                                 @else
-                                                <input value="{{ $user->guests->occupation }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="occupation"  placeholder="" required>
+                                                <input value="{{ $user->guests->occupation }}" type="text" class="form-control input-default" id="validationCustom01"  wire:model.defer="occupation">
                                                 @endif
                                             </div>
                                         </div>
@@ -135,8 +138,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" wire:click="updateUser()" data-bs-dismiss="modal" class="btn btn-primary" >Create Now</button>
+                            {{-- <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button> --}}
+                            <button type="button" wire:click="updateUser()" data-bs-dismiss="modal" class="btn btn-primary" >Save Changes</button>
                         </div>  
                     </form>
                 </div>
