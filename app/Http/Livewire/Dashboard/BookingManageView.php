@@ -48,12 +48,10 @@ class BookingManageView extends Component
 
     public function makeBooking(){
         try {
-            
             $user = $this->registerGuestUser();
             $room = Room::where('id', $this->book_room_id)
                         ->where('team_id', auth()->user()->currentTeam->id)
                         ->where('is_available', 1)->with('room_types')->first();
-            // dd($room !== null);
             if($room !== null){
                 $room->is_available = 0;
                 $room->save();
