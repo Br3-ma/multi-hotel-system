@@ -30,7 +30,7 @@ trait BookTrait {
         return Booking::where('booking_status', 1)
         ->where('team_id', auth()->user()->currentTeam->id)
         ->orderByDesc('created_at')
-        ->with('room.room_types')->with('guests.user')->get();
+        ->with('room.room_types')->with('guests.user')->with('agents.user')->get();
     }    
     // public function getBookings(){
     //     return Booking::where('booking_status', 1)
@@ -212,6 +212,7 @@ trait BookTrait {
         
         $book = Booking::create([
             'guests_id' => $data['guest_id'],
+            'agent_id' => isset($data['agent_id']) ? $data['agent_id'] : null,
             'rooms_id' => $data['room_id'],
             'team_id' => $data['team_id'] ?? $data['hotel_id'] ,
             'reservations_id' => isset($data['reserve_id']) ? $data['reserve_id'] : null,

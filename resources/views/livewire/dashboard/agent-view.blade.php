@@ -16,6 +16,11 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center mb-2"> 
+                @if (!empty($selectedItems))
+                <button data-bs-toggle="modal" wire:click="deleteAgents()" class="btn btn-danger">
+                    Delete
+                </button>
+                @endif
                 <button data-bs-toggle="modal" data-bs-target=".create-agent-modal-lg" class="btn btn-secondary">+ New Agent</button>
             </div>
         </div>
@@ -40,13 +45,13 @@
                                         <p>Processing...</p>
                                         {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
                                     </div>
-                                    <table wire:loading.remove id="example5" class="p-4 table card-table display mb-4 shadow-hover table-responsive-lg">
+                                    <table wire:loading.remove id="example3" class="p-4 table card-table display mb-4 shadow-hover table-responsive-lg">
                                         <thead>
                                             <tr>
                                                 <th class="bg-none">
-                                                    <div class="form-check style-1">
+                                                    {{-- <div class="form-check style-1">
                                                       <input class="form-check-input" type="checkbox" value="" id="checkAll3">
-                                                    </div>
+                                                    </div> --}}
                                                 </th>
                                                 <th>Name</th>
                                                 <th>Email</th>
@@ -62,7 +67,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-check style-1">
-                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <input class="form-check-input" type="checkbox" value="{{ $guest->id }}" wire:model="selectedItems">
                                                         </div>
                                                     </td>
                                                     <td class="">

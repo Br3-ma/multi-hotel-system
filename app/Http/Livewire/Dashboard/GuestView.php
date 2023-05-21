@@ -16,7 +16,8 @@ class GuestView extends Component
     use RoomTrait, BookTrait, WithPagination;
     public $rooms;
     public $country, $fname, $lname,$email, $phone_number, $gender, $occupation, $id_type, $id_number, $user_type;
-
+    public $selectedItems = [];
+    
     public function render()
     {
         // Get Booking with room information
@@ -70,5 +71,14 @@ class GuestView extends Component
             return false;
         }
         
+    }
+
+    public function deleteGuests()
+    {
+        Guest::where('id', $this->selectedItems)->delete();
+
+        // Clear the selection after deleting users
+        $this->selectedItems = [];
+        session()->flash('success', 'Guests deleted successfully.');
     }
 }

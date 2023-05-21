@@ -17,6 +17,7 @@
                     <li><a href="{{ route('calendar') }}">Calender</a></li>
                     <li><a href="{{ route('reservations') }}">Reservations</a></li>
                     <li><a href="{{ route('bookings') }}">Bookings</a></li>
+                    <li><a href="{{ route('inquiries') }}">Inquiries</a></li>
                     <li><a href="{{ route('guests') }}">Guests</a></li>
                     <li><a href="{{ route('agents') }}">Agents</a></li>
                 </ul>
@@ -69,24 +70,24 @@
                     <li><a href="uc-lightgallery.html">Light Gallery</a></li>
                 </ul>
             </li> -->
-            <li><a href="#" class="ai-icon" aria-expanded="false">
+            {{-- <li><a href="#" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-013-checkmark"></i>
                     <span class="nav-text">Payments</span>
                 </a>
-            </li>
-            <li>
+            </li> --}}
+            {{-- <li>
                 <a class="has-arrow ai-icon" href="#" aria-expanded="false">
                     <i class="flaticon-072-printer"></i>
                     <span class="nav-text">Reports</span>
                 </a>
-                {{-- <ul aria-expanded="false">
+                <ul aria-expanded="false">
                     <li><a href="form-element.html">Form Elements</a></li>
                     <li><a href="form-wizard.html">Wizard</a></li>
                     <li><a href="form-ckeditor.html">CkEditor</a></li>
                     <li><a href="form-pickers.html">Pickers</a></li>
                     <li><a href="form-validation.html">Form Validate</a></li>
-                </ul> --}}
-            </li>
+                </ul>
+            </li> --}}
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-043-menu"></i>
                     <span class="nav-text">Settings</span>

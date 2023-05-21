@@ -44,4 +44,8 @@ class Agent extends Model
     public function added_by(){
         return $this->belongsTo(User::class, 'added_by');
     }
+
+    public function bookings(){
+        return $this->hasMany(Booking::class);
+    }
 }

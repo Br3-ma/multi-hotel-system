@@ -7,16 +7,20 @@ use App\Models\User;
 use Livewire\Component;
 use App\Traits\BookTrait;
 use Laravel\Jetstream\Jetstream;
+use Livewire\WithPagination;
 
 class BookingInquiringView extends Component
 {
-    use BookTrait;
-    public $inquiries, $contact_info, $team_id;
+    use BookTrait, WithPagination;
+    public $contact_info, $team_id;
+    public $selectedItems = [];
 
     public function render()
     {
-        $this->inquiries = Inquiry::get();
-        return view('livewire.dashboard.booking-inquiring-view');
+        $inquiries = Inquiry::where('team_id', auth()->user()->currentTeam->id)->paginate(10);
+        return view('livewire.dashboard.booking-inquiring-view',[
+            'inquiries' => $inquiries
+        ]);
     }
 
     public function viewMessageDetails($id){
@@ -47,5 +51,14 @@ class BookingInquiringView extends Component
         }
 
         return redirect()->route('dashboard');
+    }
+
+    public function deleteInquiries()
+    {
+        Inquiry::where('id', $this->selectedItems)->delete();
+
+        // Clear the selection after deleting users
+        $this->selectedItems = [];
+        session()->flash('success', 'Inquiries deleted successfully.');
     }
 }

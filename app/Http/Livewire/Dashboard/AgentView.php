@@ -15,7 +15,8 @@ class AgentView extends Component
     use RoomTrait, BookTrait, WithPagination;
     public $rooms;
     public $country, $fname, $lname,$email, $phone_number, $gender, $occupation, $id_type, $id_number, $user_type;
-
+    public $selectedItems = [];
+    
     public function render()
     {
         // Get Booking with room information
@@ -74,6 +75,15 @@ class AgentView extends Component
 
     public function remove($id){
         Agent::where('id', $id)->first()->delete();
+    }
+
+    public function deleteGuests()
+    {
+        Agent::where('id', $this->selectedItems)->delete();
+
+        // Clear the selection after deleting users
+        $this->selectedItems = [];
+        session()->flash('success', 'Guests deleted successfully.');
     }
 }
 

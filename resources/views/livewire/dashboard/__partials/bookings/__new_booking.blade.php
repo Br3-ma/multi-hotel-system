@@ -24,6 +24,23 @@
                                         </div>
                                     </div> 
                                 </div>
+                                <div class="col-xl-12 col-xxl-12 col-lg-12"> 
+                                    <div class="p-2 row">
+                                        <label class="col-lg-12 col-form-label" for="validationCustom01">Agent
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select wire:model="agent_id" class="default-select wide form-control" id="validationCustom05">
+                                            <option value="">None</option>
+                                            @forelse($agents as $agent)
+                                                <option value="{{ $agent->id }}">{{ $agent->user->fname.' '.$agent->user->lname }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a one.
+                                        </div>
+                                    </div> 
+                                </div>
                                 <div class="col-xl-6 mt-2 p-6">                                             
                                     <div class="p-2 row">
                                         <label class="col-lg-6 col-form-label" for="validationCustom01">First Name

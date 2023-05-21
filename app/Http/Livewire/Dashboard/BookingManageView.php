@@ -15,9 +15,10 @@ use Livewire\Component;
 class BookingManageView extends Component
 {
     use RoomTrait, UserTrait, BookTrait;
-    public $bookings, $guests, $room_types, $rooms;
+    public $bookings, $guests, $agent_id, $agents, $room_types, $rooms;
     public $country, $fname, $checkin_date, $checkout_date, $num_adults, $num_children;
     public $lname, $email, $message, $user, $book_room_id, $room, $reservation;
+    public $selectedBookings = [];
 
     public function render()
     {
@@ -25,6 +26,7 @@ class BookingManageView extends Component
         $this->rooms = $this->getAvailableRooms2(auth()->user()->currentTeam->id);
         $this->bookings = $this->getBookings();
         $this->guests = $this->getGuests();
+        $this->agents = $this->getAgents();
         $this->room_types = $this->getAllRoomTypes2(auth()->user()->currentTeam->id);
         return view('livewire.dashboard.booking-manage-view');
     }
@@ -58,6 +60,7 @@ class BookingManageView extends Component
     
                 $data = [
                     'guest_id' => $user->id,
+                    'agent_id' => $this->agent_id,
                     'room_id' => $this->book_room_id,
                     'in' => $this->checkin_date,
                     'out' =>  $this->checkout_date,
@@ -103,6 +106,20 @@ class BookingManageView extends Component
             return $check;
         }
         
+    }
+
+    public function deleteBookings()
+    {
+        foreach($this->selectedBookings as $b){
+            $book = Booking::where('id', $b)->first();
+            $this->toggleRoomStatus($book->rooms_id);
+        }
+        Booking::whereIn('id', $this->selectedBookings)->delete();
+
+        // Clear the selection after deleting users
+        $this->selectedBookings = [];
+
+        session()->flash('message', 'Bookings deleted successfully.');
     }
 }
 

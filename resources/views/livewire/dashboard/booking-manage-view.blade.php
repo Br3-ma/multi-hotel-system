@@ -15,7 +15,12 @@
                     </li> --}}
                 </ul>
             </div>
-            <div class="d-flex align-items-center mb-2"> 
+            <div class="d-flex align-items-center mb-2">
+                @if(!empty($selectedBookings))
+                <button data-bs-toggle="modal" wire:click="deleteBookings()" class="btn btn-danger ml-2">
+                    Delete
+                </button>
+                @endif
                 <button data-bs-toggle="modal" data-bs-target=".new-booking-modal-lg" class="btn btn-secondary">
                     + New Booking
                 </button>
@@ -58,7 +63,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-check style-1">
-                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <input class="form-check-input" type="checkbox" value="{{ $booking->id }}" wire:model="selectedBookings">
                                                         </div>
                                                     </td>
                                                     <td>
@@ -99,7 +104,11 @@
                                                         </div>
                                                     </td>
                                                     <td class="">
-                                                        <span class="fs-16 font-w500 text-nowrap"> - </span>
+                                                        <span class="fs-16 font-w500 text-nowrap"> 
+                                                        {{ 
+                                                            $booking->agents != null ? $booking->agents->user->fname.' '.$booking->agents->user->lname : 'None' 
+                                                        }} 
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <div>
@@ -109,7 +118,16 @@
                                                     </td>
                                                     <td class="facility">
                                                         <div>
-                                                            <span class="fs-16 comments">{{ $booking->room->room_types != null ? $booking->room->room_types->comments : ''}}</span>
+                                                            <span class="fs-16 comments">
+                                                                {{ 
+                                                                    $booking->guests != null ? $booking->guests->user->fname.' '.$booking->guests->user->lname : 'None' 
+                                                                }} 
+                                                                <small>
+                                                                    {{ 
+                                                                        $booking->guests != null ? $booking->guests->phone_number.' '.$booking->guests->user->email : 'None' 
+                                                                    }} 
+                                                                </small>
+                                                            </span>
                                                         </div>
                                                     </td>
                                                     <td>

@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Agent;
 use App\Models\Guest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -39,6 +40,10 @@ trait UserTrait{
 
     public function getGuests(){
         return Guest::where('team_id', auth()->user()->currentTeam->id)->with('user')->get();
+    }
+
+    public function getAgents(){
+        return Agent::where('team_id', auth()->user()->currentTeam->id)->with('user')->get();
     }
 }
 

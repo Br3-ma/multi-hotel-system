@@ -20,7 +20,11 @@
            
             </div>
             <div class="d-flex align-items-center mb-2"> 
-
+                @if (!empty($selectedRoomTypes))
+                <button data-bs-toggle="modal" wire:click="deleteRoomTypes()" class="btn btn-danger">
+                    Delete
+                </button>
+                @endif
                 <button data-bs-toggle="modal" data-bs-target=".create-room-type-modal-lg" class="btn btn-secondary">+ New Room Type</button>
                 {{-- <div class="newest ms-3">
                     <select class="default-select">
@@ -52,13 +56,13 @@
                                         <p>Processing...</p>
                                         {{-- <img src="{{ asset('public/dash/images/loader.gif') }}" /> --}}
                                     </div>
-                                    <table wire:loading.remove id="example3" wire:ignore.self wire:poll.100000ms class="display mb-4 shadow-hover table-responsive-lg">
+                                    <table wire:loading.remove id="example3" wire:ignore.self class="display mb-4 shadow-hover table-responsive-lg">
                                         <thead>
                                             <tr>
                                                 <th class="bg-none">
-                                                    <div class="form-check style-1">
+                                                    {{-- <div class="form-check style-1">
                                                       <input class="form-check-input" type="checkbox" value="" id="checkAll3">
-                                                    </div>
+                                                    </div> --}}
                                                 </th>
                                                 <th>Room Name</th>
                                                 <th>Bed Type</th>
@@ -72,7 +76,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-check style-1">
-                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <input class="form-check-input" type="checkbox" value="{{ $type->id }}" wire:model="selectedRoomTypes">
                                                         </div>
                                                     </td>
                                                     <td>
